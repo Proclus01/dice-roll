@@ -1,10 +1,10 @@
 import './App.css';
-import Die from './Die.js';
+import RollDice from './RollDice.js';
 
 function App() {
   return (
     <div className="App">
-      <Die number={"two"}/>
+      <RollDice />
     </div>
   );
 }
