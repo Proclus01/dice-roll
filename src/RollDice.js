@@ -3,27 +3,46 @@ import Die from './Die.js';
 import './RollDice.css';
 
 class RollDice extends Component {
-    constructor(props) {
-        super(props);
-        this.numbers = [
+    // This lets us pass in props from a parent component
+    // and let us dynamically change how many sides there are for our dice
+    static defaultProps = {
+        sides: [
             "one",
             "two",
             "three",
             "four",
             "five",
             "six"
-        ];
+        ]
     }
 
-    rollTheDice() {
-        return Math.floor((Math.random() * 6 ));
+    constructor(props) {
+        super(props);
+        // This will be the state for each of our dice
+        this.state = {
+            die1: 'one',
+            die2: 'one'
+        }
+    }
+
+    rng() {
+        return Math.floor(Math.random() * this.props.sides.length);
+    }
+
+    roll() {
+        // pick 2 new rolls
+        
+        // set state with new rolls
     }
 
     render() {
         return (
-            <div className="RollDice">
-                <Die number={`${this.numbers[this.rollTheDice()]}`}/>
-                <Die number={`${this.numbers[this.rollTheDice()]}`}/>
+            <div>
+                <div className="RollDice">
+                    <Die number={this.state.die1}/>
+                    <Die number={this.state.die2}/>
+                </div>
+                <button onClick={this.roll}>Roll Dice!</button>
             </div>
         );
     }
