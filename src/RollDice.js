@@ -23,6 +23,7 @@ class RollDice extends Component {
             die1: 'one',
             die2: 'one'
         }
+        this.roll = this.roll.bind(this);
     }
 
     rng() {
@@ -31,8 +32,13 @@ class RollDice extends Component {
 
     roll() {
         // pick 2 new rolls
-        
         // set state with new rolls
+        this.setState(
+            {
+                die1: this.props.sides[this.rng()],
+                die2: this.props.sides[this.rng()],
+            }
+        )
     }
 
     render() {
