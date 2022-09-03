@@ -1,4 +1,4 @@
 .Die {
-    height: 400px;
-    width: 400px;
+    padding: 45px;
+    transform: scale(4);
 }
