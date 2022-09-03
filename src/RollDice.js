@@ -21,8 +21,10 @@ class RollDice extends Component {
         // This will be the state for each of our dice
         this.state = {
             die1: 'one',
-            die2: 'one'
+            die2: 'one',
+            rolling: false // triggers to true when you click the roll button
         }
+        // bind our roll method to the constructor
         this.roll = this.roll.bind(this);
     }
 
@@ -37,7 +39,15 @@ class RollDice extends Component {
             {
                 die1: this.props.sides[this.rng()],
                 die2: this.props.sides[this.rng()],
+                rolling: true
             }
+        )
+
+        // wait one second, then set rolling to false
+        setTimeout(
+            () => {
+                this.setState({rolling: false});
+            }, 1000
         )
     }
 
@@ -48,7 +58,9 @@ class RollDice extends Component {
                     <Die number={this.state.die1}/>
                     <Die number={this.state.die2}/>
                 </div>
-                <button className="rollingButton" onClick={this.roll}>Roll Dice!</button>
+                <button className="rollingButton" onClick={this.roll}>
+                    {this.state.rolling ? "Rolling..." : "Roll Dice!"}
+                </button>
             </div>
         );
     }
