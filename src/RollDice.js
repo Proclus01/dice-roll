@@ -55,8 +55,8 @@ class RollDice extends Component {
         return (
             <div>
                 <div className="RollDice">
-                    <Die number={this.state.die1}/>
-                    <Die number={this.state.die2}/>
+                    <Die number={this.state.die1} rolling={this.state.rolling}/>
+                    <Die number={this.state.die2} rolling={this.state.rolling}/>
                 </div>
                 <button 
                     className="rollingButton" 
